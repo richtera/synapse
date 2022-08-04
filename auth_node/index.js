@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 const Web3 = require("web3");
 const Web3Token = require("web3-token/dist/web3-token.common");
-const auth = require("ejabberd-auth");
 global.fetch = require("node-fetch");
 
 const { ERC725 } = require("@erc725/erc725.js");
