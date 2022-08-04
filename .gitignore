@@ -60,3 +60,4 @@ book/
 # complement
 /complement-*
 /master.tar.gz
+node_modules

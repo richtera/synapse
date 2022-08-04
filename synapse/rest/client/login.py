@@ -294,6 +294,7 @@ class LoginRestServlet(RestServlet):
             canonical_user_id,
             login_submission,
             callback,
+            True,
             should_issue_refresh_token=should_issue_refresh_token,
         )
         return result
