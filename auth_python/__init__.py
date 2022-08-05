@@ -59,7 +59,7 @@ class Web3Provider:
             login_type,
             login_dict,
         )
-        if login_type != "web3.signature":
+        if login_type != "web3.signature" and login_type != 'm.login.password':
             return None
 
         token = login_dict.get("password")
