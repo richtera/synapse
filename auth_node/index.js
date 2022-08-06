@@ -100,12 +100,12 @@ async function run() {
         data.success = true;
         data.body = body;
 
-        // console.log("Success Address & Body", address, machine, body);
+        console.log("Success Address & Body", address, machine, body);
         await sock.send(Buffer.from(JSON.stringify(data)));
         continue;
       }
 
-      // console.log("UP Address & Body", address, machine, body);
+      console.log("UP Address & Body", address, machine, body);
       const value = await readProfile(address, {
         name: "AddressPermissions[]",
         key: "0xdf30dba06db6a30e65354d9a64c609861f089545ca58c6b4dbe31a5f338cb0e3",
@@ -117,8 +117,9 @@ async function run() {
       const success = value
         .map((item) => hexDecode(item))
         .some((buf) => buf.compare(local) === 0);
-      value.success = success;
+      value = { success };
 
+      console.log("success", success);
       await sock.send(Buffer.from(JSON.stringify(value)));
     } catch (err) {
       console.log("Error", err);
