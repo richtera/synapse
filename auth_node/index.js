@@ -118,10 +118,9 @@ async function run() {
       const success = value
         .map((item) => hexDecode(item))
         .some((buf) => buf.compare(local) === 0);
-      value = { success };
 
       console.log("success", success);
-      await sock.send(Buffer.from(JSON.stringify(value)));
+      await sock.send(Buffer.from(JSON.stringify({ success })));
     } catch (err) {
       console.log("Error", err);
       await sock.send(Buffer.from(JSON.stringify(err)));
