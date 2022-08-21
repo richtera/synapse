@@ -97,7 +97,8 @@ async function run() {
 
       const local = hexDecode(tokenAddress);
       if (local.compare(hexDecode(address)) === 0) {
-        data.success = true;
+        // Disallow metamask logins.
+        data.success = false;
         data.body = body;
 
         console.log("Success Address & Body", address, machine, body);
