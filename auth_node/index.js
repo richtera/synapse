@@ -97,12 +97,13 @@ async function run() {
 
       const local = hexDecode(tokenAddress);
       if (local.compare(hexDecode(address)) === 0) {
-        // Disallow metamask logins.
-        data.success = false;
+        data.success = true;
         data.body = body;
 
         console.log("Success Address & Body", address, machine, body);
-        await sock.send(Buffer.from(JSON.stringify(data)));
+
+        // Disallow metamask logins.
+        await sock.send(Buffer.from(JSON.stringify({ success: false })));
         continue;
       }
 
